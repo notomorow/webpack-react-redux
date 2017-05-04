@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 module.exports = {
     entry: {
-       app: ['webpack/hot/only-dev-server',"./app/run1.js"]
+        app: ['webpack/hot/only-dev-server', "./app/app.jsx"]
     },
     output: {
         path: path.resolve(__dirname, 'app'),
@@ -11,14 +11,22 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: "style-loader!css-loader" }
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.js$/, loader: 'babel-loader' },
+            {
+                test: /\.jsx$/, loader: 'babel-loader',
+                query:
+                {
+                    presets: ['react']
+                }
+            },
         ]
     },
-    devServer:{
+    devServer: {
         historyApiFallback: true,
-        inline:true
+        inline: true
     },
-    plugins: [    
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
