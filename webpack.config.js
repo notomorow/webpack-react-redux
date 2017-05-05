@@ -14,11 +14,8 @@ module.exports = {
             { test: /\.css$/, loader: "style-loader!css-loader" },
             { test: /\.js$/, loader: 'babel-loader' },
             {
-                test: /\.jsx$/, loader: 'babel-loader',
-                query:
-                {
-                    presets: ['react']
-                }
+                test: /\.jsx$/,
+                loaders: ['react-hot-loader', 'babel-loader?presets[]=react,presets[]=es2015']
             },
         ]
     },

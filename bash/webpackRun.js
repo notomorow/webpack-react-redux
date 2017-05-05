@@ -6,6 +6,6 @@ config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
 var compiler = webpack(config);
 var server = new webpackDevServer(compiler, {
     publicPath: "http://localhost:8080/app",
-    hot: false,
+    hot: true,
 });
 server.listen(8080);
