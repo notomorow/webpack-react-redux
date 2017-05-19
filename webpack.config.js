@@ -15,7 +15,8 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
-        loaders: [
+        rules: [
+            { test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader', enforce: "pre" },
             { test: /\.css$/, loader: "style-loader!css-loader" },
             { test: /\.js$/, loader: 'babel-loader' },
             {
@@ -32,6 +33,10 @@ module.exports = {
         inline: true,
         port: 8080,
         hot: true
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.less', '.scss', '.css'], //后缀名自动补全
     }
     // ===>>> 4. 刚刚你的plugins，主要用于处理index.html文件，比如打包，热加载，但是如果你暂时不需要打包和配置，你可以先不用加
+
 };

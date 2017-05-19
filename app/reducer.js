@@ -1,24 +1,27 @@
-console.log(2222222222)
+import Action from './Redux/action';
 function add(state) {
-    var obj = Object.assign({}, state);
+    let obj = Object.assign({}, state);
+
     obj.count++;
     return obj;
 }
 function add2(state) {
-    var obj = Object.assign({}, state);
+    let obj = Object.assign({}, state);
+
     obj.count2 += 12;
-    console.log(11)
     return obj;
 }
+
+
 export default function counter(state = { count: 0, count2: 0 }, action) {
-    const count = state.count
-    const count2 = state.count2
+    // let count = state.count
+    // let count2 = state.count2
     switch (action.type) {
-        case 'increase':
-            return add(state)
-        case 'increase2':
-            return add2(state)
+        case Action.increaseAction.type:
+            return add(state);
+        case Action.increaseAction2.type:
+            return add2(state);
         default:
-            return state
+            return state;
     }
 }
